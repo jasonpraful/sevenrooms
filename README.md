@@ -2,8 +2,6 @@
 
 This is a simple program to allow you to fetch and get notified when a booking is available for a room/table at your favourite hotel which is being servced by the sevenrooms api.
 
-I dedicate this project to all my fellow nerds who spend hours refreshing to check for a table availability at their favourite hotel. I personally struggled finding a table which forced me to build this program.
-
 Getting this up and running is super simple
 
 ##  Configuration Steps

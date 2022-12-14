@@ -42,8 +42,13 @@ while True:
     response = requests.get(
         f'https://www.sevenrooms.com/api-yoa/availability/widget/range?venue={config.VENUE}&time_slot={config.MAIN_TIME}&party_size={config.NUM_PEOPLE}&halo_size_interval=16&start_date={converted_date}&num_days=1&channel=SEVENROOMS_WIDGET')
     data = response.json()
-    available = data['data']['availability'][config.DATE_NEEDED][0]['times']
-    print(available[0]['time_iso'])
+    try:
+        available = data['data']['availability'][config.DATE_NEEDED][0]['times']
+        print(available[0]['time_iso'])
+    except:
+        print('No times available')
+        time.sleep(config.RETRY_AFTER)
+        continue
     times_i_want = [config.DATE_NEEDED + ' ' + s for s in config.TIMES_NEEDED]
     print(times_i_want)
     for i in available:
