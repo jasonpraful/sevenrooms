@@ -12,7 +12,10 @@ def email(time):
     message = f"Subject: {subject}\n\n{body}"
     response = requests.post(
         url=f"https://api.telegram.org/{config.BOT_SECRET}/sendMessage",
-        data={"chat_id": config.TELEGRAM_CHAT_ID, "text": message},
+        data={
+            "chat_id": config.TELEGRAM_CHAT_ID,
+            "text": message
+        },
     ).json()
     if config.ENABLE_EMAIL:
         gmail_user = config.EMAIL_USERNAME
@@ -38,8 +41,7 @@ runcount = 0
 while True:
     print(runcount)
     converted_date = datetime.datetime.strptime(
-        config.DATE_NEEDED, "%Y-%m-%d"
-    ).strftime("%m-%d-%Y")
+        config.DATE_NEEDED, "%Y-%m-%d").strftime("%m-%d-%Y")
     runcount += 1
     response = requests.get(
         f"https://www.sevenrooms.com/api-yoa/availability/widget/range?venue={config.VENUE}&time_slot={config.MAIN_TIME}&party_size={config.NUM_PEOPLE}&halo_size_interval=16&start_date={converted_date}&num_days=1&channel=SEVENROOMS_WIDGET"
