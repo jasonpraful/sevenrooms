@@ -4,12 +4,11 @@ import time
 import config
 import datetime
 
-
 def email(time):
     subject = 'Booking is now available'
-    body = f'Booking for {time} is now available'
+    body = f'Booking for {time} is now available.\n\n Book here: https://www.sevenrooms.com/reservations/{config.VENUE}'
     message = f'Subject: {subject}\n\n{body}'
-    response = requests.post(
+    requests.post(
         url=f'https://api.telegram.org/{config.BOT_SECRET}/sendMessage',
         data={'chat_id': config.TELEGRAM_CHAT_ID, 'text': message}
     ).json()
