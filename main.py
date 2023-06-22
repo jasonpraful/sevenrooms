@@ -4,6 +4,7 @@ import time
 import config
 import datetime
 
+
 def email(time):
     subject = 'Booking is now available'
     body = f'Booking for {time} is now available.\n\n Book here: https://www.sevenrooms.com/reservations/{config.VENUE}'
